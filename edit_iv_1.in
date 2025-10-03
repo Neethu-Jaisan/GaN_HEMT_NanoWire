@@ -44,13 +44,26 @@ METHOD NEWTON
 
 solve init
 solve vsource=0 
-solve name=Drain vDrain=0 vstep=0.05 vfinal=0.5
+solve name=drain vdrain=0 vstep=0.05 vfinal=0.5
 log outf =gaa_nwire_GaN_iv.log master
 solve name=gate vgate=0 vstep=0.05 vfinal=2
+
 output e.field j.electron j.hole j.conduc j.total ex.field ey.field e.mobility h.mobility qsse.temp h.temp qfn qfp con.band val.band j.disp
+
 save outf =gaa_nwire_GaN_iv.str master
 tonyplot gaa_nwire_GaN_iv.log
 tonyplot gaa_nwire_GaN_iv.str
+log off
+
+# AC Analysis
+
+solve init
+solve name=drain vdrain=0 vstep=0.05 vfinal=0.5
+log outf =gaa_nwire_ac.log master
+solve name=gate vgate=0 vstep=0.05 vfinal=1 AC FREQ=1.0e6
+save outf =gaa_nwire_ac.str master
+tonyplot gaa_nwire_ac.log
+tonyplot gaa_nwire_ac.str
 log off
 
 quit
