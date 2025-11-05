@@ -35,7 +35,7 @@ save outf=gaa_nwire_GaN_3D.str
 tonyplot gaa_nwire_GaN_3D.str
 
 ####### MODEL ###############################################################
-MODEL FLDMOB CVT SRH AUGER FERMI BGN temperature=300
+MODEL FLDMOB CVT SRH AUGER FERMI BGN  bipolar temperature=300
 output e.field j.electron j.hole j.conduc j.total ex.field ey.field e.mobility h.mobility qsse.temp h.temp qfn qfp con.band val.band j.disp
 
 ####### METHOD ###############################################################
